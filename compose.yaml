@@ -1,0 +1,60 @@
+version: "3"
+services:
+  ssh-server:
+    image: ubuntu:latest
+    container_name: ssh-server
+    restart: always
+    ports:
+      - 127.0.0.1:22:22
+    volumes:
+      - ssh-server-etc:/
+
+  flarum:
+    volumes:
+      - ssh-server-bin:/bin
+      - ssh-server-boot:/boot
+      - ssh-server-dev:/dev
+      - ssh-server-etc:/etc
+      - ssh-server-home:/home
+      - ssh-server-lib:/lib
+      - ssh-server-lib32:/lib32
+      - ssh-server-lib64:/lib64
+      - ssh-server-libx32:/libx32
+      - ssh-server-media:/media
+      - ssh-server-mnt:/mnt
+      - ssh-server-opt:/opt
+      - ssh-server-proc:/proc
+      - ssh-server-root:/root
+      - ssh-server-run:/run
+      - ssh-server-sbin:/sbin
+      - ssh-server-srv:/srv
+      - ssh-server-sys:/sys
+      - ssh-server-usr:/usr
+      - ssh-server-var:/var
+
+volumes:
+  flarum-data:
+  nginx-conf:
+  letsencrypt-data:
+  letsencrypt-lockfiles:
+  mariadb-data:
+  ssh-server-bin:
+  ssh-server-boot:
+  ssh-server-dev:
+  ssh-server-etc:
+  ssh-server-home:
+  ssh-server-lib:
+  ssh-server-lib32:
+  ssh-server-lib64:
+  ssh-server-libx32:
+  ssh-server-media:
+  ssh-server-mnt:
+  ssh-server-opt:
+  ssh-server-proc:
+  ssh-server-root:
+  ssh-server-run:
+  ssh-server-sbin:
+  ssh-server-srv:
+  ssh-server-sys:
+  ssh-server-usr:
+  ssh-server-var:
