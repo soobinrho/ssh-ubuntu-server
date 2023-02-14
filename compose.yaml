@@ -1,9 +1,12 @@
 version: "3"
 services:
   ssh-server:
-    image: ubuntu:latest
+    build:
+      context: .
+      dockerfile: ssh-server.Dockerfile
     container_name: ssh-server
     restart: always
+    hostname: thi
     ports:
       - 127.0.0.1:22:22
     volumes:
