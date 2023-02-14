@@ -7,13 +7,8 @@ services:
     ports:
       - 127.0.0.1:22:22
     volumes:
-      - ssh-server-etc:/
-
-  flarum:
-    volumes:
       - ssh-server-bin:/bin
       - ssh-server-boot:/boot
-      - ssh-server-dev:/dev
       - ssh-server-etc:/etc
       - ssh-server-home:/home
       - ssh-server-lib:/lib
@@ -23,7 +18,6 @@ services:
       - ssh-server-media:/media
       - ssh-server-mnt:/mnt
       - ssh-server-opt:/opt
-      - ssh-server-proc:/proc
       - ssh-server-root:/root
       - ssh-server-run:/run
       - ssh-server-sbin:/sbin
@@ -50,7 +44,6 @@ volumes:
   ssh-server-media:
   ssh-server-mnt:
   ssh-server-opt:
-  ssh-server-proc:
   ssh-server-root:
   ssh-server-run:
   ssh-server-sbin:
@@ -58,3 +51,31 @@ volumes:
   ssh-server-sys:
   ssh-server-usr:
   ssh-server-var:
+
+# Unlike RUN, which runs commands at the build time,
+# CMD is what the image runs when we use "docker run ..."
+# The difference between CMD and ENTRYPOINT is that
+# extra arguments at "docker run <HERE>" override CMD,
+# while ENTRYPOINT is still preserved.
+#
+# CMD [ "sh", "-c", "echo Hello World" ]
+
+
+# "The best use for ENTRYPOINT is to set the image’s main command,
+# allowing that image to be run as though it was that command
+# (and then use CMD as the default flags)."
+# Example:
+#   ENTRYPOINT ["s3cmd"]
+#   CMD ["--help"]
+# Source:
+#   https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+#
+# Difference between exec form and shell form:
+# Exec form: ENTRYPOINT ["executable", "param1", "param2"]
+# Shell form: ENTRYPOINT command param1 param2
+# Exec form is preferred because shell form "will not receive Unix signals -
+# so your executable will not receive a SIGTERM from docker stop <container>."
+# Source:
+#   https://docs.docker.com/engine/reference/builder
+#
+# ENTRYPOINT ["sh", "-c", "echo Hello World"]
