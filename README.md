@@ -11,7 +11,8 @@ view my personal files. Thus, I decided to let them SSH into this Docker contain
 
 ***How we run this***<br>
 ```bash
-# 
+# Open a Bash shell
+docker compose run ssh-server bash
 ...
 
 # Secure using Cloudflare Tunnel

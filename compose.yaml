@@ -7,6 +7,7 @@ services:
     container_name: ssh-server
     restart: always
     hostname: thi
+    tty: true
     ports:
       - 127.0.0.1:22:22
     volumes:
@@ -37,7 +38,6 @@ volumes:
   mariadb-data:
   ssh-server-bin:
   ssh-server-boot:
-  ssh-server-dev:
   ssh-server-etc:
   ssh-server-home:
   ssh-server-lib:

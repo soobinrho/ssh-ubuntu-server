@@ -6,11 +6,10 @@ RUN apt update \
     sudo \
     vim \
     git \
+    snoopy \
     openssh-server \
  && adduser dev --disabled-password --gecos "" \
  && wget -O /tmp/install-snoopy.sh https://github.com/a2o/snoopy/raw/install/install/install-snoopy.sh \
- && chmod 755 /tmp/install-snoopy.sh \
- && /tmp/install-snoopy.sh stable
 
  # Source:
  #   https://github.com/a2o/snoopy#output
