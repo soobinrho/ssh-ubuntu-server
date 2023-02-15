@@ -26,3 +26,8 @@ RUN adduser dev --disabled-password --gecos "" \
  && ssh-keygen -t rsa -b 4096 -f /home/dev/.ssh/id_rsa -N ""
 
 WORKDIR /home/dev
+
+# TODO:
+# - User supervisor for process management possibly. Or use S6.
+# Source:
+#   https://advancedweb.hu/supervisor-with-docker-lessons-learned/
